@@ -1,11 +1,14 @@
 package me.chanjar.weixin.mp.bean.tag;
 
-import com.google.gson.annotations.SerializedName;
-import me.chanjar.weixin.common.util.ToStringUtils;
-import me.chanjar.weixin.mp.util.json.WxMpGsonBuilder;
-
 import java.io.Serializable;
 import java.util.List;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import com.google.gson.annotations.SerializedName;
+import lombok.Data;
+import me.chanjar.weixin.mp.util.json.WxMpGsonBuilder;
 
 /**
  * <pre>
@@ -13,23 +16,24 @@ import java.util.List;
  * Created by Binary Wang on 2016-09-19.
  * </pre>
  *
- * @author <a href="https://github.com/binarywang">binarywang(Binary Wang)</a>
+ * @author <a href="https://github.com/binarywang">Binary Wang</a>
  */
+@Data
 public class WxTagListUser implements Serializable {
   private static final long serialVersionUID = -4551768374200676112L;
 
   /**
-   * "count":2,这次获取的粉丝数量
+   * "count":2,这次获取的粉丝数量.
    */
   @SerializedName("count")
   private Integer count;
   /**
-   * "data" 粉丝列表
+   * "data" 粉丝列表.
    */
   @SerializedName("data")
   private WxTagListUserData data;
   /**
-   * "next_openid" 拉取列表最后一个用户的openid
+   * "next_openid" 拉取列表最后一个用户的openid.
    */
   @SerializedName("next_openid")
   private String nextOpenid;
@@ -44,53 +48,22 @@ public class WxTagListUser implements Serializable {
 
   @Override
   public String toString() {
-    return ToStringUtils.toSimpleString(this);
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
   }
 
-  public Integer getCount() {
-    return this.count;
-  }
-
-  public void setCount(Integer count) {
-    this.count = count;
-  }
-
-  public WxTagListUserData getData() {
-    return this.data;
-  }
-
-  public void setData(WxTagListUserData data) {
-    this.data = data;
-  }
-
-  public String getNextOpenid() {
-    return this.nextOpenid;
-  }
-
-  public void setNextOpenid(String nextOpenid) {
-    this.nextOpenid = nextOpenid;
-  }
-
+  @Data
   public static class WxTagListUserData implements Serializable {
     private static final long serialVersionUID = -8584537400336245701L;
 
     /**
-     * openid 列表
+     * openid 列表.
      */
     @SerializedName("openid")
     private List<String> openidList;
 
     @Override
     public String toString() {
-      return ToStringUtils.toSimpleString(this);
-    }
-
-    public List<String> getOpenidList() {
-      return this.openidList;
-    }
-
-    public void setOpenidList(List<String> openidList) {
-      this.openidList = openidList;
+      return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
   }
 }

@@ -1,13 +1,17 @@
 package me.chanjar.weixin.mp.bean.kefu.result;
 
-import com.google.gson.annotations.SerializedName;
-import me.chanjar.weixin.common.util.ToStringUtils;
-
 import java.io.Serializable;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import com.google.gson.annotations.SerializedName;
+import lombok.Data;
 
 /**
  * @author Binary Wang
  */
+@Data
 public class WxMpKfSession implements Serializable {
   private static final long serialVersionUID = 7804332813164994062L;
 
@@ -39,38 +43,7 @@ public class WxMpKfSession implements Serializable {
 
   @Override
   public String toString() {
-    return ToStringUtils.toSimpleString(this);
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
   }
 
-  public String getKfAccount() {
-    return this.kfAccount;
-  }
-
-  public void setKfAccount(String kfAccount) {
-    this.kfAccount = kfAccount;
-  }
-
-  public long getCreateTime() {
-    return this.createTime;
-  }
-
-  public void setCreateTime(long createTime) {
-    this.createTime = createTime;
-  }
-
-  public String getOpenid() {
-    return this.openid;
-  }
-
-  public void setOpenid(String openid) {
-    this.openid = openid;
-  }
-
-  public long getLatestTime() {
-    return this.latestTime;
-  }
-
-  public void setLatestTime(long latestTime) {
-    this.latestTime = latestTime;
-  }
 }

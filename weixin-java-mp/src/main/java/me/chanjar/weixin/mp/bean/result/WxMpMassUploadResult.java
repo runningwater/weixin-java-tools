@@ -1,18 +1,22 @@
 package me.chanjar.weixin.mp.bean.result;
 
-import me.chanjar.weixin.common.util.ToStringUtils;
-import me.chanjar.weixin.mp.util.json.WxMpGsonBuilder;
-
 import java.io.Serializable;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import lombok.Data;
+import me.chanjar.weixin.mp.util.json.WxMpGsonBuilder;
 
 /**
  * <pre>
- * 上传群发用的素材的结果
+ * 上传群发用的素材的结果.
  * 视频和图文消息需要在群发前上传素材
  * </pre>
  *
  * @author chanjarster
  */
+@Data
 public class WxMpMassUploadResult implements Serializable {
   private static final long serialVersionUID = 6568157943644994029L;
 
@@ -24,33 +28,9 @@ public class WxMpMassUploadResult implements Serializable {
     return WxMpGsonBuilder.create().fromJson(json, WxMpMassUploadResult.class);
   }
 
-  public String getType() {
-    return this.type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public String getMediaId() {
-    return this.mediaId;
-  }
-
-  public void setMediaId(String mediaId) {
-    this.mediaId = mediaId;
-  }
-
-  public long getCreatedAt() {
-    return this.createdAt;
-  }
-
-  public void setCreatedAt(long createdAt) {
-    this.createdAt = createdAt;
-  }
-
   @Override
   public String toString() {
-    return ToStringUtils.toSimpleString(this);
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
   }
 
 }

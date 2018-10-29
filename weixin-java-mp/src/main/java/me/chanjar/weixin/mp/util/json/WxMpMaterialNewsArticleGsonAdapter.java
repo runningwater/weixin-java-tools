@@ -1,11 +1,3 @@
-/*
- * KINGSTAR MEDIA SOLUTIONS Co.,LTD. Copyright c 2005-2013. All rights reserved.
- *
- * This source code is the property of KINGSTAR MEDIA SOLUTIONS LTD. It is intended
- * only for the use of KINGSTAR MEDIA application development. Reengineering, reproduction
- * arose from modification of the original source, or other redistribution of this source
- * is not permitted without written permission of the KINGSTAR MEDIA SOLUTIONS LTD.
- */
 package me.chanjar.weixin.mp.util.json;
 
 import com.google.gson.*;
@@ -15,6 +7,9 @@ import org.apache.commons.lang3.BooleanUtils;
 
 import java.lang.reflect.Type;
 
+/**
+ * @author codepiano
+ */
 public class WxMpMaterialNewsArticleGsonAdapter implements JsonSerializer<WxMpMaterialNews.WxMpMaterialNewsArticle>, JsonDeserializer<WxMpMaterialNews.WxMpMaterialNewsArticle> {
 
   @Override
@@ -86,7 +81,7 @@ public class WxMpMaterialNewsArticleGsonAdapter implements JsonSerializer<WxMpMa
     }
     JsonElement showCoverPic = articleInfo.get("show_cover_pic");
     if (showCoverPic != null && !showCoverPic.isJsonNull()) {
-      article.setShowCoverPic(GsonHelper.getAsBoolean(showCoverPic));
+      article.setShowCoverPic(BooleanUtils.toBoolean(showCoverPic.getAsInt()));
     }
     JsonElement url = articleInfo.get("url");
     if (url != null && !url.isJsonNull()) {
@@ -95,12 +90,12 @@ public class WxMpMaterialNewsArticleGsonAdapter implements JsonSerializer<WxMpMa
 
     JsonElement needOpenComment = articleInfo.get("need_open_comment");
     if (needOpenComment != null && !needOpenComment.isJsonNull()) {
-      article.setNeedOpenComment(GsonHelper.getAsBoolean(needOpenComment));
+      article.setNeedOpenComment(BooleanUtils.toBoolean(needOpenComment.getAsInt()));
     }
 
     JsonElement onlyFansCanComment = articleInfo.get("only_fans_can_comment");
     if (onlyFansCanComment != null && !onlyFansCanComment.isJsonNull()) {
-      article.setOnlyFansCanComment(GsonHelper.getAsBoolean(onlyFansCanComment));
+      article.setOnlyFansCanComment(BooleanUtils.toBoolean(onlyFansCanComment.getAsInt()));
     }
     return article;
   }

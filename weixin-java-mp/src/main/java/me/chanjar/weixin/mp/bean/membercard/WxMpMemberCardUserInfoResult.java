@@ -1,9 +1,12 @@
 package me.chanjar.weixin.mp.bean.membercard;
 
-import me.chanjar.weixin.common.util.ToStringUtils;
-import me.chanjar.weixin.mp.util.json.WxMpGsonBuilder;
-
 import java.io.Serializable;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import lombok.Data;
+import me.chanjar.weixin.mp.util.json.WxMpGsonBuilder;
 
 /**
  * <pre>
@@ -15,6 +18,7 @@ import java.io.Serializable;
  * @author YuJian
  * @version 2017/7/9
  */
+@Data
 public class WxMpMemberCardUserInfoResult implements Serializable {
 
   private static final long serialVersionUID = 9084777967442098311L;
@@ -31,6 +35,8 @@ public class WxMpMemberCardUserInfoResult implements Serializable {
 
   private Integer bonus;
 
+  private Double balance;
+
   private String sex;
 
   private MemberCardUserInfo userInfo;
@@ -39,93 +45,9 @@ public class WxMpMemberCardUserInfoResult implements Serializable {
 
   private Boolean hasActive;
 
-  public static long getSerialVersionUID() {
-    return serialVersionUID;
-  }
-
-  public String getErrorCode() {
-    return errorCode;
-  }
-
-  public void setErrorCode(String errorCode) {
-    this.errorCode = errorCode;
-  }
-
-  public String getErrorMsg() {
-    return errorMsg;
-  }
-
-  public void setErrorMsg(String errorMsg) {
-    this.errorMsg = errorMsg;
-  }
-
-  public String getOpenId() {
-    return openId;
-  }
-
-  public void setOpenId(String openId) {
-    this.openId = openId;
-  }
-
-  public String getNickname() {
-    return nickname;
-  }
-
-  public void setNickname(String nickname) {
-    this.nickname = nickname;
-  }
-
-  public String getMembershipNumber() {
-    return membershipNumber;
-  }
-
-  public void setMembershipNumber(String membershipNumber) {
-    this.membershipNumber = membershipNumber;
-  }
-
-  public Integer getBonus() {
-    return bonus;
-  }
-
-  public void setBonus(Integer bonus) {
-    this.bonus = bonus;
-  }
-
-  public String getSex() {
-    return sex;
-  }
-
-  public void setSex(String sex) {
-    this.sex = sex;
-  }
-
-  public MemberCardUserInfo getUserInfo() {
-    return userInfo;
-  }
-
-  public void setUserInfo(MemberCardUserInfo userInfo) {
-    this.userInfo = userInfo;
-  }
-
-  public String getUserCardStatus() {
-    return userCardStatus;
-  }
-
-  public void setUserCardStatus(String userCardStatus) {
-    this.userCardStatus = userCardStatus;
-  }
-
-  public Boolean getHasActive() {
-    return hasActive;
-  }
-
-  public void setHasActive(Boolean hasActive) {
-    this.hasActive = hasActive;
-  }
-
   @Override
   public String toString() {
-    return ToStringUtils.toSimpleString(this);
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
   }
 
   public static WxMpMemberCardUserInfoResult fromJson(String json) {

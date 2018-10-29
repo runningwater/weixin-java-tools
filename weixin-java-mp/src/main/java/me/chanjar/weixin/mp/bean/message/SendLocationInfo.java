@@ -1,11 +1,14 @@
 package me.chanjar.weixin.mp.bean.message;
 
+import java.io.Serializable;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
-import me.chanjar.weixin.common.util.ToStringUtils;
+import lombok.Data;
 import me.chanjar.weixin.common.util.xml.XStreamCDataConverter;
-
-import java.io.Serializable;
 
 /**
  * <pre>
@@ -15,6 +18,7 @@ import java.io.Serializable;
  * @author Binary Wang
  */
 @XStreamAlias("SendLocationInfo")
+@Data
 public class SendLocationInfo implements Serializable {
   private static final long serialVersionUID = 6633214140499161130L;
 
@@ -36,50 +40,10 @@ public class SendLocationInfo implements Serializable {
 
   @XStreamAlias("Poiname")
   @XStreamConverter(value = XStreamCDataConverter.class)
-  private String poiname;
+  private String poiName;
 
   @Override
   public String toString() {
-    return ToStringUtils.toSimpleString(this);
-  }
-
-  public String getLocationX() {
-    return this.locationX;
-  }
-
-  public void setLocationX(String locationX) {
-    this.locationX = locationX;
-  }
-
-  public String getLocationY() {
-    return this.locationY;
-  }
-
-  public void setLocationY(String locationY) {
-    this.locationY = locationY;
-  }
-
-  public String getScale() {
-    return this.scale;
-  }
-
-  public void setScale(String scale) {
-    this.scale = scale;
-  }
-
-  public String getLabel() {
-    return this.label;
-  }
-
-  public void setLabel(String label) {
-    this.label = label;
-  }
-
-  public String getPoiname() {
-    return this.poiname;
-  }
-
-  public void setPoiname(String poiname) {
-    this.poiname = poiname;
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
   }
 }
